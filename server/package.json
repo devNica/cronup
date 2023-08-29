@@ -1,0 +1,56 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "ts-standard --fix",
+    "dev": "tsnd --respawn --transpile-only --files src/server.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server-core": "^3.12.0",
+    "apollo-server-express": "^3.12.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "graphql": "15.3.0",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.1",
+    "module-alias": "^2.2.3",
+    "morgan": "^1.10.0",
+    "pg": "^8.11.3",
+    "pg-hstore": "^2.3.4",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1",
+    "typeorm": "^0.3.17",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.17",
+    "@types/graphql-query-complexity": "^0.2.1",
+    "@types/helmet": "^4.0.0",
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/morgan": "^1.9.5",
+    "@types/node": "^20.5.7",
+    "dotenv": "^16.3.1",
+    "ts-node-dev": "^2.0.0",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.2.2"
+  },
+   "eslintConfig": {
+    "parserOptions": {
+      "project": "./server/tsconfig.json"
+    },
+    "extends": [
+      "./node_modules/ts-standard/eslintrc.json"
+    ]
+  },
+  "_moduleAliases": {
+    "@core": "src/core",
+    "@modules": "src/modules",
+    "@api": "src/api"
+  }
+}
