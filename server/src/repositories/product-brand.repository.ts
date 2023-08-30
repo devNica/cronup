@@ -12,7 +12,7 @@ class ProductBrandRepository {
 
   async fetchAll (): Promise<FetchProductBrandModel[] | never> {
     try {
-      return await this.productBrandRepository.find()
+      return await this.productBrandRepository.find({ relations: ['models'] })
     } catch (error) {
       throw new Error(String(error))
     }

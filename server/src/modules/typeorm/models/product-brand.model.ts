@@ -1,6 +1,7 @@
 import { ProductBrandEntity } from '@core/entities/product-brand.entity'
-import { Entity, BaseEntity, Unique, PrimaryGeneratedColumn, Column, CreateDateColumn } from 'typeorm'
+import { Entity, BaseEntity, Unique, PrimaryGeneratedColumn, Column, CreateDateColumn, OneToMany } from 'typeorm'
 import { ObjectType, Field, Int } from 'type-graphql'
+import { ProductModelModel } from './product-model.model'
 
 @Entity({ name: 'product_brand' })
 @ObjectType()
@@ -30,4 +31,8 @@ export class ProductBrandModel extends BaseEntity implements ProductBrandEntity 
   @CreateDateColumn({ name: 'updated_at', nullable: true })
   @Field(() => Date)
     updatedAt?: Date | undefined
+
+  @OneToMany(() => ProductModelModel, model => model.brand)
+  @Field(() => [ProductModelModel])
+    models: ProductModelModel[]
 }

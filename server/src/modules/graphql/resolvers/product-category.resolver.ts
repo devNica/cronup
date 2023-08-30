@@ -22,9 +22,9 @@ export default class ProductCategoryResolver {
 
   @Mutation(() => ProductCategoryModel, { nullable: true })
   async updCategory (
-    @Arg('data') ctg: UpdateProductCategoryInput
+    @Arg('data') ctx: UpdateProductCategoryInput
   ): Promise<FetchProductCategoryModel | null> {
-    const category = await productCategoryRepository.update({ id: ctg.id, payload: { ...ctg } })
+    const category = await productCategoryRepository.update({ id: ctx.id, payload: { ...ctx } })
     return category
   }
 }

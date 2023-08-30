@@ -22,9 +22,9 @@ export default class ProductBrandResolver {
 
   @Mutation(() => ProductBrandModel, { nullable: true })
   async updBrand (
-    @Arg('data') brd: UpdateProductBrandInput
+    @Arg('data') ctx: UpdateProductBrandInput
   ): Promise<FetchProductBrandModel | null> {
-    const brand = await productBrandRepository.update({ id: brd.id, payload: { ...brd } })
+    const brand = await productBrandRepository.update({ id: ctx.id, payload: { ...ctx } })
     return brand
   }
 }

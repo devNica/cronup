@@ -10,7 +10,7 @@ export const appDataSource = new DataSource({
   password: constants.DB_PASSWORD,
   database: constants.DB_NAME,
   synchronize: constants.SYNC_DATABASE,
-  logging: true,
+  logging: false,
   entities: ['src/modules/typeorm/models/**/*.ts'],
   subscribers: [],
   migrations: []
