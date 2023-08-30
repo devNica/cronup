@@ -1,7 +1,8 @@
 import 'reflect-metadata'
+import { DataSource } from 'typeorm'
 import constants from '@core/shared/constants'
 
-export const dbConnectionConfig = {
+export const appDataSource = new DataSource({
   type: constants.DB_DIALECT,
   host: constants.DB_HOST,
   port: 5432,
@@ -13,4 +14,4 @@ export const dbConnectionConfig = {
   entities: ['src/modules/typeorm/models/**/*.ts'],
   subscribers: [],
   migrations: []
-}
+})

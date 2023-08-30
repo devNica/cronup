@@ -1,10 +1,10 @@
-import { dbConnectionConfig } from '@core/config/database.config'
+import { appDataSource } from '@core/config/database.config'
 import { DataSource } from 'typeorm'
 
 class TypeORMModule {
   private readonly typeorm: DataSource
   constructor () {
-    this.typeorm = new DataSource(dbConnectionConfig)
+    this.typeorm = appDataSource
   }
 
   async connect (): Promise<void> {
