@@ -51,6 +51,8 @@
   "_moduleAliases": {
     "@core": "src/core",
     "@modules": "src/modules",
+    "@services": "src/services",
+    "@repositories": "src/repositories",
     "@api": "src/api"
   }
 }

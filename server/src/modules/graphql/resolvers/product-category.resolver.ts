@@ -4,7 +4,7 @@ import { CreateProductCategoryInput, UpdateProductCategoryInput } from '../input
 import { appDataSource } from '@core/config/database.config'
 
 @Resolver()
-export class ProductCategoryResolver {
+export default class ProductCategoryResolver {
   @Query(() => [ProductCategoryModel])
   async getCategories (): Promise<ProductCategoryModel[]> {
     return await ProductCategoryModel.find()

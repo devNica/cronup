@@ -1,7 +1,8 @@
+import { InsertProductBrandModel, UpdateProductBrandModel } from '@core/models/dto/product-brand-dto.model'
 import { Field, InputType, Int } from 'type-graphql'
 
 @InputType()
-class CreateProductBrandInput {
+class CreateProductBrandInput implements InsertProductBrandModel {
   @Field(() => String, { nullable: false })
     brandName: string
 
@@ -10,7 +11,7 @@ class CreateProductBrandInput {
 }
 
 @InputType()
-class UpdateProductBrandInput {
+class UpdateProductBrandInput implements UpdateProductBrandModel {
   @Field(() => Int)
     id: number
 
