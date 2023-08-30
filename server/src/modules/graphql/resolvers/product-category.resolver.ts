@@ -1,33 +1,30 @@
 import { ProductCategoryModel } from '@modules/typeorm/models/product-category.model'
 import { Resolver, Query, Mutation, Arg } from 'type-graphql'
 import { CreateProductCategoryInput, UpdateProductCategoryInput } from '../inputs/product-category.input'
-import { appDataSource } from '@core/config/database.config'
+import { productCategoryRepository } from '@repositories/product-category.repository'
+import { FetchProductCategoryModel } from '@core/models/dto/product-category-dto.model'
 
 @Resolver()
 export default class ProductCategoryResolver {
   @Query(() => [ProductCategoryModel])
-  async getCategories (): Promise<ProductCategoryModel[]> {
-    return await ProductCategoryModel.find()
+  async getCategories (): Promise<FetchProductCategoryModel[]> {
+    const categories = await productCategoryRepository.fetchAll()
+    return categories
   }
 
   @Mutation(() => ProductCategoryModel)
   async createCategory (
     @Arg('data') newCategory: CreateProductCategoryInput
-  ): Promise<ProductCategoryModel> {
-    return await ProductCategoryModel.create({ ...newCategory }).save()
+  ): Promise<FetchProductCategoryModel> {
+    const category = await productCategoryRepository.create(newCategory)
+    return category
   }
 
   @Mutation(() => ProductCategoryModel, { nullable: true })
   async updCategory (
     @Arg('data') ctg: UpdateProductCategoryInput
-  ): Promise<ProductCategoryModel | null> {
-    const categoryRepository = appDataSource.getRepository(ProductCategoryModel)
-    const category = await categoryRepository.findOneBy({ id: ctg.id })
-    if (category !== null) {
-      category.categoryName = ctg.categoryName ?? category.categoryName
-      category.isActive = ctg.isActive ?? category.isActive
-      await category.save()
-    }
+  ): Promise<FetchProductCategoryModel | null> {
+    const category = await productCategoryRepository.update({ id: ctg.id, payload: { ...ctg } })
     return category
   }
 }
