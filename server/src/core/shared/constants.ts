@@ -8,7 +8,7 @@ export default {
   DB_PASSWORD: process.env.DB_PASSWORD,
   DB_HOST: process.env.DB_HOST,
   DB_DIALECT: process.env.DB_DIALECT,
-  SYNC_DATABASE: true,
+  SYNC_DATABASE: false,
   JWT_SECRET: process.env.JWT_SECRET,
   JWT_SECRET_REFRESH: process.env.JWT_SECRET_REFRESH,
   JWT_SECRET_EXPIRATION_SECS: process.env.JWT_SECRET_EXPIRATION_SECS,

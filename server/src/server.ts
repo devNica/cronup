@@ -5,6 +5,7 @@ import HttpServerExpress from '@modules/express/http-server.module'
 import constants from '@core/shared/constants'
 import { appExpress, server } from '@core/config/server.config'
 import { typeormInstance } from '@modules/typeorm/typeorm.module'
+import GraphqlApolloServer from '@modules/graphql/apollo-server.module'
 
 const { SERVER_PORT } = constants
 
@@ -15,6 +16,10 @@ async function startServer (): Promise<void> {
   await typeormInstance.connect()
     .then(() => console.log('Connect database success'))
     .catch(err => console.error(err))
+
+  /** inicializar Apollo Server */
+  const apollo = new GraphqlApolloServer(appExpress)
+  await apollo.start()
 
   /** inicializar servidor http */
   const httpServer = new HttpServerExpress(SERVER_PORT, appExpress, server)
