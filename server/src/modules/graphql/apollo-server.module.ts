@@ -4,6 +4,7 @@ import { Application } from 'express'
 import { buildSchema } from 'type-graphql'
 import { TestResolver } from './resolvers/test.resolver'
 import { ProductCategoryResolver } from './resolvers/product-category.resolver'
+import { ProductBrandResolver } from './resolvers/product-brand.resolver'
 
 export default class GraphqlApolloServer {
   private apolloServer: ApolloServer
@@ -15,7 +16,7 @@ export default class GraphqlApolloServer {
   private async setupSchemas (): Promise<void> {
     this.apolloServer = new ApolloServer({
       schema: await buildSchema({
-        resolvers: [TestResolver, ProductCategoryResolver],
+        resolvers: [TestResolver, ProductCategoryResolver, ProductBrandResolver],
         validate: false
       }),
       plugins: [ApolloServerPluginLandingPageGraphQLPlayground()]
