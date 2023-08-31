@@ -3,13 +3,6 @@ import { FetchProductModelModel, InsertProductModelModel, UpdateProductModelMode
 import { ProductModelModel } from '@modules/typeorm/models/product-model.model'
 import { Repository } from 'typeorm'
 
-// export interface ProductModelRepositoryI {
-//   create: (data: InsertProductModelModel) => Promise<FetchProductModelModel | never>
-//   fetchAll: () => Promise<FetchProductModelModel[] | never>
-//   fetchById: ({ id }: { id: number }) => Promise<FetchProductModelModel | never>
-//   update: ({ id, payload }: { id: number, payload: UpdateProductModelModel }) => Promise<FetchProductModelModel | never>
-// }
-
 export interface FetchAllProductModelOutput {
   fetchAll: () => Promise<FetchProductModelModel[] | never>
 }
