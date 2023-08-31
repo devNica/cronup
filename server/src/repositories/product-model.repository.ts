@@ -3,7 +3,18 @@ import { FetchProductModelModel, InsertProductModelModel, UpdateProductModelMode
 import { ProductModelModel } from '@modules/typeorm/models/product-model.model'
 import { Repository } from 'typeorm'
 
-class ProductModelRepository {
+// export interface ProductModelRepositoryI {
+//   create: (data: InsertProductModelModel) => Promise<FetchProductModelModel | never>
+//   fetchAll: () => Promise<FetchProductModelModel[] | never>
+//   fetchById: ({ id }: { id: number }) => Promise<FetchProductModelModel | never>
+//   update: ({ id, payload }: { id: number, payload: UpdateProductModelModel }) => Promise<FetchProductModelModel | never>
+// }
+
+export interface FetchAllProductModelOutput {
+  fetchAll: () => Promise<FetchProductModelModel[] | never>
+}
+
+export default class ProductModelRepository implements FetchAllProductModelOutput {
   private readonly productModelRepository: Repository<ProductModelModel>
 
   constructor () {
@@ -29,7 +40,6 @@ class ProductModelRepository {
   async fetchAll (): Promise<FetchProductModelModel[] | never> {
     try {
       const rows = await this.productModelRepository.find({ relations: ['brand'] })
-
       const result = rows.map(function (r): FetchProductModelModel {
         return {
           id: r.id,
@@ -96,4 +106,10 @@ class ProductModelRepository {
   }
 }
 
-export const productModelRepository = new ProductModelRepository()
+const productModelRepository = new ProductModelRepository()
+const fetchProductModelService: FetchAllProductModelOutput = productModelRepository
+
+export {
+  productModelRepository,
+  fetchProductModelService
+}
