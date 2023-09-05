@@ -12,7 +12,6 @@ class BaseProductRepository {
 
   async create (data: InsertBaseProductModel): Promise<FetchBaseProductModel | never> {
     try {
-      console.log('create: ', data)
       const newBaseProduct = await this.baseProductRepository.create(data).save()
       return {
         id: newBaseProduct.id,

@@ -2,7 +2,7 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from 'apollo-server-co
 import { ApolloServer } from 'apollo-server-express'
 import { Application } from 'express'
 import { buildSchema } from 'type-graphql'
-import resolvers from './resolvers'
+import resolvers from '@modules/graphql/resolvers'
 
 export default class GraphqlApolloServer {
   private apolloServer: ApolloServer

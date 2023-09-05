@@ -1,7 +1,7 @@
 import { ProductCategoryModel } from '@modules/typeorm/models/product-category.model'
 import { Resolver, Query, Mutation, Arg } from 'type-graphql'
 import { CreateProductCategoryInput, UpdateProductCategoryInput } from '../inputs/product-category.input'
-import { productCategoryRepository } from '@repositories/product-category.repository'
+import { productCategoryRepository } from '@api/repositories/product-category.repository'
 import { FetchProductCategoryModel } from '@core/models/dto/product-category-dto.model'
 
 @Resolver()

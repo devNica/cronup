@@ -1,7 +1,7 @@
 import { ProductBrandModel } from '@modules/typeorm/models/product-brand.model'
 import { Resolver, Query, Mutation, Arg } from 'type-graphql'
 import { CreateProductBrandInput, UpdateProductBrandInput } from '../inputs/product-brand.input'
-import { productBrandRepository } from '@repositories/product-brand.repository'
+import { productBrandRepository } from '@api/repositories/product-brand.repository'
 import { FetchProductBrandModel } from '@core/models/dto/product-brand-dto.model'
 
 @Resolver()

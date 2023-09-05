@@ -2,7 +2,7 @@ import { ProductController } from '@api/controllers/product.controller'
 import { FetchProductModelModel } from '@core/models/dto/product-model-dto.model'
 import { ControllerInputPort } from '@core/ports/input/controller-input.port'
 import { GenericSuccessResponsePresenter } from '@core/presenters/generic-success.presenter'
-import { fetchProductModelService } from '@repositories/product-model.repository'
+import { fetchProductModelService } from '@api/repositories/product-model.repository'
 import { ProductModelService } from '@api/services/product-model.service'
 
 function factory (): ControllerInputPort {

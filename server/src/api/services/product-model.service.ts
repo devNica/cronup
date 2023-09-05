@@ -1,5 +1,5 @@
 import { FetchProductModelModel } from '@core/models/dto/product-model-dto.model'
-import { FetchAllProductModelOutput } from '@repositories/product-model.repository'
+import { FetchAllProductModelOutput } from '@api/repositories/product-model.repository'
 
 export interface ProductModelServiceI {
   getAllModels: () => Promise<FetchProductModelModel[] | never>
